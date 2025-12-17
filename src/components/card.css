@@ -1,0 +1,39 @@
+body {
+  background-color: rgb(255, 255, 255);
+}
+.card {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 300px;
+  border-radius: 3px;
+  padding: 0.6rem;
+}
+
+.card-checked {
+  background-color: grey;
+}
+
+.card-unchecked {
+  background-color: aquamarine;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-check {
+  display: flex;
+  align-items: center;
+}
+.div {
+  font-size: 400px;
+}
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

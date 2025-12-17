@@ -1,0 +1,10 @@
+.todos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+.search-todo-input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
