@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# React Todo App
+> A minimal React Todo App with TypeScript, Vite, and ESLint
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+This project provides a basic Todo App built with React, TypeScript, and Vite. It includes ESLint configuration for code quality and type checking.
 
-Currently, two official plugins are available:
+## Features
+* React and React-DOM for building the user interface
+* TypeScript for type safety and code maintainability
+* Vite for fast development and hot module replacement
+* ESLint for code linting and type checking
+* Modular component structure with separate files for components, styles, and utilities
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Installation
+To install the dependencies, run the following command:
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+npm install
 ```
+## Usage
+To start the development server, run:
+```
+npm run dev
+```
+This will start the Vite development server, and you can access the app at `http://localhost:3000`.
+
+To build the app for production, run:
+```
+npm run build
+```
+To lint the code, run:
+```
+npm run lint
+```
+### Code Example
+Here's an example of a Todo component:
+```tsx
+// src/components/TodoInput.tsx
+import React, { useState } from 'react';
+
+interface TodoInputProps {
+  onAddTodo: (todo: string) => void;
+}
+
+const TodoInput: React.FC<TodoInputProps> = ({ onAddTodo }) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleAddTodo = () => {
+    onAddTodo(inputValue);
+    setInputValue('');
+  };
+
+  return (
+    <div>
+      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <button onClick={handleAddTodo}>Add Todo</button>
+    </div>
+  );
+};
+
+export default TodoInput;
+```
+## Configuration
+The project uses the following configuration files:
+
+* `tsconfig.app.json` and `tsconfig.node.json` for TypeScript configuration
+* `eslintrc.config.js` for ESLint configuration
+* `vite.config.ts` for Vite configuration
+
+## Contributing
+Contributions are welcome! To contribute, fork the repository, make your changes, and submit a pull request.
+
+## License
+This project is licensed under the MIT License.
